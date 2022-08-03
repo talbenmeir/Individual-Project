@@ -3,14 +3,17 @@ from flask import session as login_session
 import pyrebase
 
 config = {
-  "apiKey": "AIzaSyDaDeRHWUnD59hgaD9ZNDtZg49y-RMtKWk",
-  "authDomain": "first-firebase-ff06e.firebaseapp.com",
-  "projectId": "first-firebase-ff06e",
-  "storageBucket": "first-firebase-ff06e.appspot.com",
-  "messagingSenderId": "1053387551914",
-  "appId": "1:1053387551914:web:4276f2616109aea6b08cd3",
-  "measurementId": "G-6BZJYTVZTR",
+  "apiKey": "AIzaSyApZzDZSlsP57ae-epXKyWxf9K_WxA5FZI",
+  "authDomain": "first-e71e8.firebaseapp.com",
+  "databaseURL": "https://first-e71e8-default-rtdb.europe-west1.firebasedatabase.app",
+  "projectId": "first-e71e8",
+  "storageBucket": "first-e71e8.appspot.com",
+  "messagingSenderId": "187746478309",
+  "appId": "1:187746478309:web:2e462a6e5370414c8a4c0c",
+  "measurementId": "G-K68685HPFJ",
   "databaseURL": "https://first-firebase-ff06e-default-rtdb.firebaseio.com/"
+
+
 }
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
@@ -41,15 +44,13 @@ def signup():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        try:
-            
-            login_session['user'] = auth.create_user_with_email_and_password(email, password)
-            user = {"name": request.form['name'], "email":request.form['email'], "bio": request.form["bio"], "username": request.form["username"], "password": request.form["password"]}
-            db.child("Users").child(login_session['user']['localId']).set(user)
-            return redirect(url_for('add'))
-            
-        except:
-            error = "Authentication failed"
+        login_session['user'] = auth.create_user_with_email_and_password(email, password)
+        user = {"name": request.form['full_name'], "email":request.form['email'], "username": request.form["username"], "password": request.form["password"]}
+        db.child("Users").child(login_session['user']['localId']).set(user)
+        return redirect(url_for('add'))
+		        
+		  
+        error = "Authentication failed"
     return render_template("signup.html")
 
 
