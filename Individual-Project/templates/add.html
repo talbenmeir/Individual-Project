@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <title>add</title>
+</head>
+<body>
+	<center>
+   <h3> Great Job!</h3> 
+    <h4>Send a message to the world!</h4>
+   
+    
+    <form method="post" action="/add">
+        <div>
+        <label>Date</label>
+        <div>
+            <input type="text"  name="date" id="date" required>
+        </div>
+        </div>
+        <div>
+        <label>Text</label>
+        <div>
+            <input type="text"  name="text" id="text" required>
+        </div>
+        </div>
+        <div>
+        <a href = "http://127.0.0.1:5000/all"><input type="submit"/></a>
+        </center>
+
+
+
+
+    </div>
+        
+    </form>
+    <style>
+        body{
+           background-image : url('../static/c.gif');
+        color: white;
+                font-family: "Lucida Console", "Courier New", monospace;
+
+        }
+    </style>
+</body>
+</html>

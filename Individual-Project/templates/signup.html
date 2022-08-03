@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <form method="POST" action="/signup">
+        <!-- Heading -->
+        <center>
+        <h4>
+            Create an account
+        </h4>
+
+        <!-- Subheading -->
+        <p >
+            Please fill up your information below to sign up.
+        </p>
+
+        <!-- Email -->
+        <div>
+            <label>Email address*</label>
+            <div>
+                <input type="email"  name="email" id="emailStr" required>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div>
+            <label>Password*</label>
+            <div class="input-group">
+                <input type="password"  name="password" minlength="6">
+            </div>
+        </div>
+
+        <div>
+            <label>Full name*</label>
+            <div>
+                <input type="text"  name="full_name" id="full_name" required>
+            </div>
+        </div>
+
+        <div>
+            <label>Username*</label>
+            <div>
+                <input type="text"  name="username" id="username" required>
+            </div>
+        </div>
+
+   
+        
+        <!-- Button -->
+        <div>
+            <input type="submit"/>
+        </div>
+
+
+    </form>
+    <br>
+    <button><a href="/"> signin </a></button>
+    </center>
+
+    <style>
+        body{
+            background-image : url('../static/d.gif');
+            color: white;
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+       
+    </style>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <meta charset="UTF-8">
+    <title>signin</title>
+</head>
+<body>
+    <form method="POST" action="/">
+        <center>        <!-- Heading -->
+        <h2>WELCOME TO THE MESAGGE WEB (:</h2>
+        <H3>Here you can write a message that everyone in the world can see!</H3>
+        <h4>
+        Log in to your account
+        </h4>
+
+        <!-- Subheading -->
+        <p >
+        Please fill up your information below to sign in.
+        </p>
+
+        <!-- Email -->
+        <div>
+            <label>Email address*</label>
+            <div>
+                <input type="email"  name="email" id="emailStr" required>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div>
+            <label>Password*</label>
+            <div class="input-group">
+                <input type="password"  name="password" minlength="6">
+            </div>
+        </div>
+        <br>
+        <!-- Button -->
+        <div>
+            <input type="submit"/>
+        </div>
+    </form>
+    <br>
+    <p>Don't have an account yet?</p>
+    <button> <a href="/signup"> Signup </a> </button>
+    </center>
+
+    <style>
+        body{
+        background-image: url('../static/d.gif');
+        color: white;
+        font-family: "Lucida Console", "Courier New", monospace;
+
+
+    }
+    </style>
+</body>
+</html>

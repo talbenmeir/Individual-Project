@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Title</title>
 </head>
 <body>
+    Great Job!
+    <button><a href = "http://127.0.0.1:5000/signout">Signout</a></button>
     
+    <form method="post" action="/add">
+        <div>
+        <label>Title</label>
+        <div>
+            <input type="text"  name="title" id="title" required>
+        </div>
+        </div>
+        <div>
+        <label>Text</label>
+        <div>
+            <input type="text"  name="text" id="text" required>
+        </div>
+        </div>
+        <div>
+        <a href = "http://127.0.0.1:5000/all"><input type="submit"/></a>
+
+    </div>
+        
+    </form>
 </body>
 </html>
