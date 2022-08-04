@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask import session as login_session
 import pyrebase
+import datetime
 
 config = {
   "apiKey": "AIzaSyApZzDZSlsP57ae-epXKyWxf9K_WxA5FZI",
@@ -34,6 +35,7 @@ def signin():
             return redirect(url_for('add'))
         except:
             error = "Authentication failed"
+            print(error)
             return render_template("signin.html")
     return render_template("signin.html")
 
@@ -56,21 +58,19 @@ def signup():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
-    if request.method == 'POST':
-        date = request.form["date"]
-        text = request.form["text"]
-        uid = db.child("Users").child(login_session['user']['localId']).get().val()
-        
-        #try:
-        add = {"date": date, "text": text, "uid": uid}
-        db.child("Page").push(add)
-        
-
-        return redirect(url_for('all'))
-        #except:
-        print("Couldn't add page")
-        return render_template("add.html")
-    return render_template("add.html")
+	e = datetime.datetime.now()
+	date = e.strftime("%a, %b %d, %Y")
+	if request.method == 'POST':
+		text = request.form["text"]
+		uid = db.child("Users").child(login_session['user']['localId']).get().val()
+		try:
+			add = {"date": date, "text": text, "uid": uid}
+			db.child("Page").push(add)
+			return redirect(url_for('all'))
+		except:
+			print("Couldn't add page")
+			return render_template("add.html")
+	return render_template("add.html", y=date)
 
 @app.route('/signout', methods=['GET', 'POST'])
 def signout():
@@ -81,8 +81,8 @@ def signout():
 @app.route('/all', methods = ['GET', 'POST'])
 def all():
     add = db.child("Page").get().val()
-
-
     return render_template("all.html", t = add)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
